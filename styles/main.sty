@@ -33,13 +33,13 @@
 
 % ----- auto-generate commit history -----
 % title of the generated history timeline
-\protected\def\HistoryTimelineTitle{Änderungsverlauf}
+\protected\def\HistoryTimelineTitle{}
 
 % maximum commits to show in the history timeline
 \def\HistoryTimelineLimit{5}
 
 % title of the generated history table
-\protected\def\HistoryTableTitle{Vollständiger Änderungsverlauf}
+\protected\def\HistoryTableTitle{}
 
 % maximum commits to show in the history table use '0' for no limit
 \def\HistoryTableLimit{0}
@@ -78,6 +78,7 @@
 \usepackage{styles/history}             % auto-generate commit history - included packages: xparse, graphicx, calc, booktabs, ltablex, environ, ifplatform
 \usepackage{styles/commands}            % enable or disable predefined commands
 \usepackage{styles/htbla}               % htbla weiz styles - included packages: xcolor, hyperref, geometry, fancyhdr, calc
+\usepackage{styles/htbla-thesis}        % htbla weiz thesis styles - included packages: pgffor, acronym
 
 % --------- mathematical packages --------
 \usepackage{amsmath}                    % mathematical symbols
@@ -117,11 +118,11 @@
 % \usepackage[most]{tcolorbox}            % add coloured and framed boxes environment
 
 % ------- bibliography management --------
-% \usepackage[                            % ┝ easier and more flexible bibliography management
-%  backend=biber,                         % |
-%  style=iso-numeric,                     % | or iso-authoryear
-% ]{biblatex}                             % |
-% \addbibresource{references.bib}         % |
+\usepackage[                            % ┝ easier and more flexible bibliography management
+ backend=biber,                         % |
+ style=iso-numeric,                     % | or iso-authoryear
+]{biblatex}                             % |
+\addbibresource{references.bib}         % |
 
 % -------- source code formatting --------
 % \PassOptionsToPackage{outputdir=\auxDir}{minted}\usepackage{minted}

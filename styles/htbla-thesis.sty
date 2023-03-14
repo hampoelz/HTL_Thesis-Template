@@ -1,0 +1,123 @@
+%
+% Copyright (c) 2023 Rene Hampölz
+%
+% Use of this source code is governed by an MIT-style
+% license that can be found in the LICENSE file under
+% https://github.com/hampoelz/LaTeX-Template.
+%
+
+\typeout{Rene Hampölz, 2023}
+
+% ========================================
+%              Do not change!             
+% ========================================
+
+\usepackage{pgffor}
+\usepackage{acronym}
+
+\newcounter{CountDiplomanden}
+\newcounter{CountBetreuer}
+\newcounter{CountFirma}
+
+\nocite{*}
+
+\newcommand{\thesisname}{Thesis}
+\newcommand{\prologuename}{Prologue}
+\newcommand{\listacronymname}{List of Abbreviations}
+\newcommand{\historyname}{Changelog}
+\newcommand{\fullhistoryname}{Full changelog}
+
+\addto{\captionsgerman}{\renewcommand{\thesisname}{Diplomarbeit}}
+\addto{\captionsgerman}{\renewcommand{\prologuename}{Vorwort}}
+\addto{\captionsgerman}{\renewcommand{\listacronymname}{Abkürzungsverzeichnis}}
+\addto{\captionsgerman}{\renewcommand{\historyname}{Änderungsverlauf}}
+\addto{\captionsgerman}{\renewcommand{\fullhistoryname}{Vollständiger Änderungsverlauf}}
+\addto{\captionsenglish}{\renewcommand{\contentsname}{Table of Contents}}
+
+\confidential{\textbf{- {\thesisname} -}}
+
+\newcommand{\AbgabeTermin}[1]{\gdef\AbgabeTermin{#1}}
+
+\gdef\DeckblattBildSrc{}
+\newcommand{\DeckblattBild}[1]{\gdef\DeckblattBildSrc{#1}}
+
+\newcommand{\Diplomand}[2]{%
+    \stepcounter{CountDiplomanden}%
+    \expandafter\newcommand\csname diplomand\theCountDiplomanden_name \endcsname{#1}%
+    \expandafter\newcommand\csname diplomand\theCountDiplomanden_klasse \endcsname{#2}%
+}
+
+\newcommand{\Betreuer}[1]{%
+    \stepcounter{CountBetreuer}%
+    \expandafter\newcommand\csname betreuer\theCountBetreuer \endcsname{#1}%
+}
+
+\newcommand{\PartnerFirma}[1]{%
+    \stepcounter{CountFirma}%
+    \expandafter\newcounter\expandafter{CountFirma\theCountFirma_Betreuer}%
+    \expandafter\newcommand\csname firma\theCountFirma \endcsname{#1}%
+}
+
+\newcommand{\PartnerFirmaBetreuer}[2]{%
+    \expandafter\stepcounter\expandafter{CountFirma\theCountFirma_Betreuer}%
+    \expandafter\newcommand\csname firma\theCountFirma_betreuer\arabic{CountFirma\theCountFirma_Betreuer}_rolle \endcsname{#1}%
+    \expandafter\newcommand\csname firma\theCountFirma_betreuer\arabic{CountFirma\theCountFirma_Betreuer}_name \endcsname{#2}%
+}
+
+\newcommand{\printDeckblatt}{
+    \clearpage
+    \input{styles/pages/deckblatt.tex}
+    \clearpage
+}
+
+\newcommand{\printEidesstatt}{
+    \clearpage
+    \input{styles/pages/eidesstatt.tex}
+    \clearpage
+}
+
+\newcommand{\printInhaltsverzeichnis}{
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{section}{\contentsname}
+    \tableofcontents
+    \clearpage
+}
+
+\newcommand{\printLiteratur}{
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{section}{\refname}
+    \printbibliography
+    \clearpage
+}
+
+\newcommand{\printAbbildungen}{
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{section}{\listfigurename}
+    \listoffigures
+    \clearpage
+}
+
+\newcommand{\printTabellen}{
+    \clearpage
+    \phantomsection
+    \addcontentsline{toc}{section}{\listtablename}
+    \listoftables
+    \clearpage
+}
+
+\newcommand{\printAkronyme}{
+    \clearpage
+    \unnumberedSection{\listacronymname}
+    \input{acronyms.tex}
+    \clearpage
+}
+
+\newcommand{\printFullHistory}{
+    \clearpage
+    \unnumberedSection{\fullhistoryname}
+    \IncludeHistoryTable
+    \clearpage
+}

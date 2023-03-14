@@ -1,0 +1,94 @@
+%
+% Copyright (c) 2023 Rene Hampölz
+%
+% Use of this source code is governed by an MIT-style
+% license that can be found in the LICENSE file under
+% https://github.com/hampoelz/LaTeX-Template.
+%
+
+\typeout{Rene Hampölz, 2023}
+
+% ========================================
+%              Do not change!             
+% ========================================
+
+\date{Weiz, am \AbgabeTermin}
+
+\maketitle
+
+\vfill
+
+\begin{center}
+    \color{htbla}{\textbf{\tsizeHuge{DIPLOMARBEIT}}}
+\end{center}
+
+\if\relax\detokenize\expandafter{\DeckblattBildSrc}\relax\else
+    \vspace{2em}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{\DeckblattBildSrc}
+    \end{figure}
+\fi
+
+\vfill
+
+\xdef\DiplomandenTableEntries{}
+\foreach \n in {1,...,\theCountDiplomanden}{%
+    \xdef\DiplomandenTableEntries{%
+        \DiplomandenTableEntries \csname diplomand\n_name \endcsname & \csname diplomand\n_klasse \endcsname \cr%
+    }%
+}
+
+\xdef\BetreuerTableEntries{}
+\foreach \n in {1,...,\theCountBetreuer}{%
+    \xdef\BetreuerTableEntries{%
+        \BetreuerTableEntries \csname betreuer\n \endcsname \cr%
+    }%
+}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}[t]{L{0.3\textwidth}C{0.15\textwidth}}
+        \textbf{Ausgeführt von} & \textbf{Klasse} \\
+        \DiplomandenTableEntries
+    \end{tabular}
+    \hspace{0.04\textwidth}
+    \begin{tabular}[t]{R{0.4\textwidth}}
+        \textbf{Betreuer}\\
+        \BetreuerTableEntries
+    \end{tabular}
+\end{table}
+
+\ifnum\value{CountFirma}=0\else
+    \xdef\PartnerTableEntries{}
+    \foreach \n in {1,...,\theCountFirma}{%
+        \def\CountFirmaBetreuer{\arabic{CountFirma\n_Betreuer}}%
+        \xdef\PartnerTableEntries{%
+            \PartnerTableEntries \csname firma\n \endcsname%
+        }%
+        \foreach \i in {1,...,\CountFirmaBetreuer}{%
+            \xdef\PartnerTableEntries{%
+                \PartnerTableEntries & \csname firma\n_betreuer\i_rolle \endcsname: & \csname firma\n_betreuer\i_name \endcsname \cr%
+            }%
+        }%
+        \ifnum\n=\value{CountFirma}\else
+            \xdef\PartnerTableEntries{%
+                \PartnerTableEntries \cr%
+            }%
+        \fi
+    }
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}[t]{L{0.4\textwidth}R{0.2\textwidth}L{0.3\textwidth}}
+            \textbf{Projektpartner} & & \\
+            \PartnerTableEntries
+        \end{tabular}
+    \end{table}
+\fi
+
+\vfill
+
+\hrulefill\break
+Abgabevermerk:\\[2em]
+Datum: \hfill Betreuer: \hfill\null

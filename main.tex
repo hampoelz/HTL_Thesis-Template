@@ -4,29 +4,57 @@
 \usepackage{styles/main}
 \usepackage{styles/custom}
 
-\htltitle{}
-\confidential{\textbf{}}
-
 \author{}
 \company{HTBLA Weiz}
-\date{}
+
+% ----- Informationen über die Diplomarbeit -----
+
+\htltitle{Projektname}
+\AbgabeTermin{28.03.2023}
+
+\DeckblattBild{images/emily.jpg}
+
+\Diplomand{Diplomand 1}{5AHET}
+\Diplomand{Diplomand 2}{5BHET}
+\Diplomand{Diplomand 3}{5AHMBT}
+\Diplomand{Diplomand 4}{5AHMBU}
+\Diplomand{Diplomand X}{5AHWIM}
+
+\Betreuer{Betreuer 1}
+\Betreuer{Betreuer X}
+
+\PartnerFirma{Firma 1}
+\PartnerFirmaBetreuer{Betreuer}{Person 1}
+\PartnerFirmaBetreuer{Ansprechperson}{Person 2}
+\PartnerFirmaBetreuer{Kontaktperson}{Person X}
+
+\PartnerFirma{Firma X}
+\PartnerFirmaBetreuer{Vertreter X}{Person Y}
+
+% -----------------------------------------------
 
 \begin{document}
-\maketitle
+\settocdepth{section}
 
-\IncludeHistoryTimeline
-
-\tableofcontents
-% \listoffigures
-\clearpage
+\printDeckblatt
+\printEidesstatt
+\include{src/00_Allgemein/01_Kurzbeschreibung.tex}
+\include{src/00_Allgemein/02_Vorbemerkung.tex}
+\printInhaltsverzeichnis
 
 \settocdepth{subsection}
 
-% \clearpage
-% 
-% \nocite{*}
-% \printbibliography
 
-\IncludeHistoryTable
+% Diese Zeile kann ohne Bedenken entfernt werden,
+% sie wird nur verwendet, um die korrekte Ausführung
+% der Vorlagenfunktionen zu testen.
+\include{tests/_tests.tex}
+
+
+\printLiteratur     % Literatur
+\printAbbildungen   % Abbildungsverzeichnis
+\printTabellen      % Tabellenverzeichnis
+\printAkronyme      % Abkürzungsverzeichnis
+\printFullHistory   % Vollständiger Änderungsverlauf
 
 \end{document}
