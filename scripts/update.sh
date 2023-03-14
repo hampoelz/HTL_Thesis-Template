@@ -27,7 +27,7 @@ tplver_file=".git/tplver"
 currbr_file=".git/currbr"
 
 # commits ignored by cherry-pick (seperate with space)
-ignore_SHAs="4a11026"
+ignore_SHAs="4a11026 7cf3a73"
 
 
 hookmgr_path="scripts/hookmgr.sh"
