@@ -24,14 +24,15 @@
 \newcommand{\thesisname}{Thesis}
 \newcommand{\prologuename}{Prologue}
 \newcommand{\listacronymname}{List of Abbreviations}
-\newcommand{\historyname}{Changelog}
-\newcommand{\fullhistoryname}{Full changelog}
+\newcommand{\changelogname}{Changelog}
+\newcommand{\fullchangelogname}{Full changelog}
 
 \addto{\captionsgerman}{\renewcommand{\thesisname}{Diplomarbeit}}
 \addto{\captionsgerman}{\renewcommand{\prologuename}{Vorwort}}
 \addto{\captionsgerman}{\renewcommand{\listacronymname}{Abkürzungsverzeichnis}}
-\addto{\captionsgerman}{\renewcommand{\historyname}{Änderungsverlauf}}
-\addto{\captionsgerman}{\renewcommand{\fullhistoryname}{Vollständiger Änderungsverlauf}}
+\addto{\captionsgerman}{\renewcommand{\changelogname}{Änderungsverlauf}}
+\addto{\captionsgerman}{\renewcommand{\fullchangelogname}{Vollständiger Änderungsverlauf}}
+
 \addto{\captionsenglish}{\renewcommand{\contentsname}{Table of Contents}}
 
 \confidential{\textbf{- {\thesisname} -}}
@@ -115,9 +116,14 @@
     \clearpage
 }
 
-\newcommand{\printFullHistory}{
+\newcommand{\printChangelog}{
+    \unnumberedSection{\changelogname}
+    \IncludeHistoryTimeline
+}
+
+\newcommand{\printFullChangelog}{
     \clearpage
-    \unnumberedSection{\fullhistoryname}
+    \unnumberedSection{\fullchangelogname}
     \IncludeHistoryTable
     \clearpage
 }
