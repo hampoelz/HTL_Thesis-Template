@@ -6,6 +6,10 @@
 # https://github.com/hampoelz/LaTeX-Template.
 #
 
+# Benutzung:
+#   https://github.com/hampoelz/HTL_LaTeX-Template/wiki/02-Benutzung#vorkonfigurierte-skriptetasks
+#   https://github.com/hampoelz/HTL_LaTeX-Template/wiki/02-Benutzung#aktualisieren
+
 #!/bin/bash
 
 # minimum required git version: v2.22.0
