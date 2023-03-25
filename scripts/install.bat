@@ -6,6 +6,8 @@
 :: https://github.com/hampoelz/LaTeX-Template.
 ::
 
+:: Benutzung: https://github.com/hampoelz/HTL_LaTeX-Template/wiki/02-Benutzung#vorkonfigurierte-skriptetasks
+
 @echo off
 
 set "gh_repo=hampoelz/HTL_Thesis-Template"
