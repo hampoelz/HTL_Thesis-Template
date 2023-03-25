@@ -127,3 +127,15 @@
     \IncludeHistoryTable
     \clearpage
 }
+
+\newcommand{\printAppendix}{{
+    \clearpage
+    \unnumberedSection{\appendixname}
+    \let\savesubsection\subsection
+    \let\savesubsubsection\subsubsection
+    \def\section{\savesubsection}
+    \def\subsection{\savesubsubsection}
+    \def\thesubsection{\@Alph\c@subsection}
+    \input{appendix.tex}
+    \clearpage
+}}
