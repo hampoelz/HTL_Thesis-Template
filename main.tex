@@ -36,11 +36,13 @@
 \begin{document}
 \settocdepth{section}
 
+\pagenumbering{Roman}
 \printDeckblatt
 \printEidesstatt
 \input{src/00_Allgemein/01_Kurzbeschreibung.tex}
 \input{src/00_Allgemein/02_Vorbemerkung.tex}
 \printInhaltsverzeichnis
+\pagenumbering{arabic}
 
 \settocdepth{subsection}
 
@@ -55,11 +57,7 @@
 \printAbbildungen   % Abbildungsverzeichnis
 \printTabellen      % Tabellenverzeichnis
 \printAkronyme      % Abkürzungsverzeichnis
-
-\pagenumbering{Roman}
 \printAppendix      % Anhang
-
-\pagenumbering{gobble}
 \printFullChangelog % Vollständiger Änderungsverlauf
 
 \end{document}
