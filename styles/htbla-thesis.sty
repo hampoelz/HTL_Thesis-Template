@@ -128,14 +128,27 @@
     \clearpage
 }
 
+\let\savesection\section
+\let\savesubsection\subsection
+\let\savesubsubsection\subsubsection
+
+\def\appendixSection#1{
+    \ifnum\value{subsection}>0
+        \clearpage
+    \fi
+    \savesubsection{#1}
+    \pagenumbering{arabic}
+    \def\thepage{\thesubsection.\arabic{page}}
+}
+
 \newcommand{\printAppendix}{{
     \clearpage
     \unnumberedSection{\appendixname}
-    \let\savesubsection\subsection
-    \let\savesubsubsection\subsubsection
-    \def\section{\savesubsection}
+    \def\section{\appendixSection}
     \def\subsection{\savesubsubsection}
     \def\thesubsection{\@Alph\c@subsection}
+    \def\thesubsubsection{\@Roman\c@subsubsection}
     \input{appendix.tex}
     \clearpage
+    \pagenumbering{gobble}
 }}
