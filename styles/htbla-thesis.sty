@@ -14,6 +14,7 @@
 
 \usepackage{pgffor}
 \usepackage{acronym}
+\usepackage[onehalfspacing]{setspace}
 
 \newcounter{CountDiplomanden}
 \newcounter{CountBetreuer}
@@ -67,7 +68,9 @@
 
 \newcommand{\printDeckblatt}{
     \clearpage
-    \input{styles/pages/deckblatt.tex}
+    \begin{singlespacing}
+        \input{styles/pages/deckblatt.tex}
+    \end{singlespacing}
     \clearpage
 }
 
@@ -79,9 +82,11 @@
 
 \newcommand{\printInhaltsverzeichnis}{
     \clearpage
-    \phantomsection
-    \addcontentsline{toc}{section}{\contentsname}
-    \tableofcontents
+    \begin{singlespacing}
+        \phantomsection
+        \addcontentsline{toc}{section}{\contentsname}
+        \tableofcontents
+    \end{singlespacing}
     \clearpage
 }
 
@@ -117,14 +122,18 @@
 }
 
 \newcommand{\printChangelog}{
-    \unnumberedSection{\changelogname}
-    \IncludeHistoryTimeline
+    \begin{singlespacing}
+        \unnumberedSection{\changelogname}
+        \IncludeHistoryTimeline
+    \end{singlespacing}
 }
 
 \newcommand{\printFullChangelog}{
     \clearpage
-    \unnumberedSection{\fullchangelogname}
-    \IncludeHistoryTable
+    \begin{singlespacing}
+        \unnumberedSection{\fullchangelogname}
+        \IncludeHistoryTable
+    \end{singlespacing}
     \clearpage
 }
 
