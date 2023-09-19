@@ -68,9 +68,12 @@
 % ------------ toc pagebreak -------------
 \newcommand{\tocbreak}{\addtocontents{toc}{\protect\pagebreak}}
 
-% ------------ highlight text ------------
-\usepackage{xcolor}
-\newcommand{\hl}[1]{\colorbox[HTML]{FBF719}{#1}}
+% - underline/strikethrough/highlight text -
+\usepackage{luacolor}
+\usepackage{lua-ul}
+\newcommand{\ul}[1]{\underLine{#1}}
+\newcommand{\st}[1]{\strikeThrough{#1}}
+\newcommand{\hl}[1]{\highLight{#1}}
 
 % --- align columns with custom width ----
 \usepackage{array}

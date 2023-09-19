@@ -26,6 +26,7 @@ jobs:
       run: git config --global --add safe.directory $GITHUB_WORKSPACE
     - name: Build document
       run: |
+        find src -type d -links 2 -exec mkdir -p "out/{}" \;
         latexmk -g -f --interaction=nonstopmode
         cp out/main.pdf out/${{ github.event.repository.name }}.pdf
       env:
